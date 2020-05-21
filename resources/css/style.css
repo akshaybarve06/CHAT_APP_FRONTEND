@@ -1,0 +1,38 @@
+/*
+* @Description :
+*
+* @file: index.html
+* @overview: index.html is the entry point for running current app
+* @author: Akshay Dhananjay Barve
+* @version: 20.04
+* @since: 20/05/2020- Wednesday
+*/
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+body.welcome{
+    background-image: url("../images/BG.jpg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;}
+
+h1.welcome {
+    color: #FFFFFF ;
+    font-size: 70px;
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 40%;
+    left: 22%;
+    transform: translate(0, -50%) 
+}
+a.link{
+    color: green;
+    font-size: larger;
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 43%;
+    transform: translate(0, -50%) 
+}
