@@ -21,8 +21,16 @@
           <input class="un " type="text" align="center" placeholder="Email">
           <input class="pass" type="password" align="center" placeholder="Password">
           <p class="bottom-one"></p>
-          <a class="submit" align="center">Sign Up</a>
+          <a class="submit"type="submit" onclick="clicked();"align="center" value="Button" >Sign Up</a>
           <a href="signin.html" class="register" align="center">Already Registered?</a>
         </div>
+        <script type="text/javascript">
+            function clicked() {
+                if (confirm('Do you want to Submit ?'))
+                   yourformelement.submit();
+                else
+                   return false;
+            }
+        </script>
     </body>   
 </html>

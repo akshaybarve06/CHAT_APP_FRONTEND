@@ -41,7 +41,7 @@ a.link
 }
 .bottom-one 
 {
-    margin-bottom: 1cm;
+    margin-bottom: 0.7cm;
  }
 body 
 {
@@ -65,7 +65,7 @@ body
     font-weight: bold;
     font-size: 23px;
 }
-.un 
+.un
 {
     width: 76%;
     color: #2f4f4f;
