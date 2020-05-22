@@ -12,17 +12,28 @@
     <head>
         <link rel="stylesheet" href="../resources/css/style.css">
         <title>First Page</title>
-    </head>  
+    </head>
+    <script>
+        function validateForm() {
+            var username = document.forms["myform"]["username"].value;
+            var password = document.forms["myform"]["password"].value;
+            if (username == "" || password == "") {
+                alert("UserName or Password Is Empty Check Credentials");
+                return false;
+            }
+        }
+    </script>  
     <body>
         <div class="signin">
             <p class="sign" align="center">Sign In</p>
-            <form class="form1">
-              <input class="un " type="text" align="center" placeholder="Email / Username">
-              <input class="pass" type="password" align="center" placeholder="Password">
-              <p class="bottom-one"></p>
-              <a class="submit" align="center">Sign Up</a>
-              <p class="bottom-one"></p>
-              <A class="forgot" HREF="#">Forgot Password?</A>
+            <form name="myform" class="form1" action="blank.html" onsubmit="return validateForm()" method="post">
+                <input class="un " type="text" align="center" name="username" placeholder="Email/Mobile No.">
+                <input class="pass" type="password" align="center" name="password" placeholder="Password">
+                <p class="bottom-one"></p>
+                <input class="submit" align="center" type="submit" value="Login">
+                <p class="bottom-one"></p>
+                <A class="forgot" HREF="#">Forgot Password?</A>
             </div>
+        </form>
     </body>
 </html>

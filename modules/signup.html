@@ -12,25 +12,57 @@
     <head>
         <link rel="stylesheet" href="../resources/css/style.css">
         <title>First Page</title>
-    </head>  
+    </head>
+    <script>
+      function validateForm() {
+          var phoneValidation = /^\d{10}$/;
+          var emailValidation = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+          var passwordValidation=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+          var name = document.forms["RegForm"]["Name"];               
+          var phone = document.forms["RegForm"]["Mobile"];    
+          var email = document.forms["RegForm"]["Email"];  
+          var password = document.forms["RegForm"]["Password"];  
+
+          if (name.value == "")                                  
+          { 
+              window.alert("Please Enter Your Name."); 
+              name.focus(); 
+              return false; 
+          }
+          if(!(phone.value.match(phoneValidation))){
+              window.alert("Please Enter Valid Mobile Number."); 
+              phone.focus();
+              return false; 
+          }
+          if (!(email.value.match(emailValidation)))                                   
+          { 
+              window.alert("Please Enter Valid Email Id."); 
+              email.focus(); 
+              return false; 
+          } 
+          if (!(password.value.match(passwordValidation)))                        
+          { 
+              window.alert("Please Enter Valid Password."); 
+              password.focus(); 
+              return false; 
+          } 
+          if(confirm('Do you want to Submit ?'))
+            yourformelement.submit();
+          else
+            return false;
+      }
+    </script>
     <body>
       <div class="main">
         <p class="sign" align="center">Create Account</p>
-        <form class="form1">
-          <input class="un " type="text" align="center" placeholder="Name">
-          <input class="un " type="text" align="center" placeholder="Email">
-          <input class="pass" type="password" align="center" placeholder="Password">
+        <form name="RegForm" class="form1" action="blank.html" onsubmit="return validateForm()" method="post">
+          <input class="un " type="text" align="center" name="Name" placeholder="Name">
+          <input class="un " type="text" align="center" name="Mobile" placeholder="Mobile">
+          <input class="un " type="text" align="center" name="Email" placeholder="Email">
+          <input class="pass" type="password" align="center" name="Password" placeholder="Password">
           <p class="bottom-one"></p>
-          <a class="submit"type="submit" onclick="clicked();"align="center" value="Button" >Sign Up</a>
+          <input class="submit" align="center" type="submit" value="SignUp">
           <a href="signin.html" class="register" align="center">Already Registered?</a>
         </div>
-        <script type="text/javascript">
-            function clicked() {
-                if (confirm('Do you want to Submit ?'))
-                   yourformelement.submit();
-                else
-                   return false;
-            }
-        </script>
     </body>   
 </html>
