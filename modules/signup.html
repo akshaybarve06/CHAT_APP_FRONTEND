@@ -23,13 +23,8 @@
           var lastname = document.forms["RegForm"]["lastname"].value;
           var phone = document.forms["RegForm"]["mobile"].value;
           var email = document.forms["RegForm"]["email"].value;
-          var password = document.forms["RegForm"]["password"];
-          var role=document.forms["RegForm"]["role"].value;
-          var service=document.forms["RegForm"]["service"].value;
-          var createddate=document.forms["RegForm"]["createddate"].value;
-          var modifieddate=document.forms["RegForm"]["modifieddate"].value;
-
-         // var confirmpassword=document.forms["RegForm"]["confirmpassword"];
+          var password = document.forms["RegForm"]["password"].value;
+          var confirmpassword=document.forms["RegForm"]["confirmpassword"].value;
           if (firstName == "")                                  
           { 
               window.alert("Please Enter Your Name."); 
@@ -60,9 +55,7 @@
               return false; 
           } 
           if(confirm('Do you want to Submit ?'))
-          {
               yourformelement.submit();
-          }
           else
             return false;
       }
