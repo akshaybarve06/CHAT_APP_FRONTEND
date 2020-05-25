@@ -6,8 +6,9 @@
 * @author: Akshay Dhananjay Barve
 * @version: 20.04
 * @since: 21/05/2020- Thursday
+*
 -->
-
+<!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" href="../resources/css/style.css">
@@ -21,16 +22,17 @@
                 alert("UserName or Password Is Empty Check Credentials");
                 return false;
             }
+            validateForm
         }
     </script>  
     <body>
         <div class="signin">
-            <p class="sign" align="center">Sign In</p>
-            <form name="myform" class="form1" action="blank.html" onsubmit="return validateForm()" method="post">
-                <input class="un " type="text" align="center" name="username" placeholder="Email/Mobile No.">
-                <input class="pass" type="password" align="center" name="password" placeholder="Password">
-                <p class="bottom-one"></p>
-                <input class="submit" align="center" type="submit" value="Login">
+            <p class="sign" >Sign In</p>
+            <p class="bottom-one"></p>
+            <form name="myform" class="form1" action="http://fundoonotes.incubation.bridgelabz.com/api/user/login" onsubmit="return validateForm()" method="post">
+                <input class="username " type="text" name="username" placeholder="Email/Mobile No.">
+                <input class="password" type="password" name="password" placeholder="Password">
+                <input class="submit" type="submit" value="Login">
                 <p class="bottom-one"></p>
                 <A class="forgot" HREF="#">Forgot Password?</A>
             </div>

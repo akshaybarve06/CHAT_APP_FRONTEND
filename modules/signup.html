@@ -6,8 +6,9 @@
 * @author: Akshay Dhananjay Barve
 * @version: 20.04
 * @since: 21/05/2020- Thursday
+*
 -->
-
+<!DOCTYPE html>
 <html>
     <head>
         <link rel="stylesheet" href="../resources/css/style.css">
@@ -18,51 +19,67 @@
           var phoneValidation = /^\d{10}$/;
           var emailValidation = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
           var passwordValidation=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
-          var name = document.forms["RegForm"]["Name"];               
-          var phone = document.forms["RegForm"]["Mobile"];    
-          var email = document.forms["RegForm"]["Email"];  
-          var password = document.forms["RegForm"]["Password"];  
+          var firstname = document.forms["RegForm"]["firstname"].value;
+          var lastname = document.forms["RegForm"]["lastname"].value;
+          var phone = document.forms["RegForm"]["mobile"].value;
+          var email = document.forms["RegForm"]["email"].value;
+          var password = document.forms["RegForm"]["password"];
+          var role=document.forms["RegForm"]["role"].value;
+          var service=document.forms["RegForm"]["service"].value;
+          var createddate=document.forms["RegForm"]["createddate"].value;
+          var modifieddate=document.forms["RegForm"]["modifieddate"].value;
 
-          if (name.value == "")                                  
+         // var confirmpassword=document.forms["RegForm"]["confirmpassword"];
+          if (firstName == "")                                  
           { 
               window.alert("Please Enter Your Name."); 
               name.focus(); 
               return false; 
           }
-          if(!(phone.value.match(phoneValidation))){
+          if(!(phone.match(phoneValidation))){
               window.alert("Please Enter Valid Mobile Number."); 
               phone.focus();
               return false; 
           }
-          if (!(email.value.match(emailValidation)))                                   
+          if (!(email.match(emailValidation)))                                   
           { 
               window.alert("Please Enter Valid Email Id."); 
               email.focus(); 
               return false; 
           } 
-          if (!(password.value.match(passwordValidation)))                        
+          if (!(password.match(passwordValidation)))                        
           { 
               window.alert("Please Enter Valid Password."); 
-              password.focus(); 
+              password.focus();
+              return false; 
+          }
+          if (password != confirmpassword)                        
+          { 
+              window.alert("Please Make Sure Both Passwords Are Same"); 
+              confirmpassword.focus();
               return false; 
           } 
           if(confirm('Do you want to Submit ?'))
-            yourformelement.submit();
+          {
+              yourformelement.submit();
+          }
           else
             return false;
       }
     </script>
     <body>
       <div class="main">
-        <p class="sign" align="center">Create Account</p>
+        <p class="sign" >Create Account</p>
+        <p class="bottom-one"></p>
         <form name="RegForm" class="form1" action="blank.html" onsubmit="return validateForm()" method="post">
-          <input class="un " type="text" align="center" name="Name" placeholder="Name">
-          <input class="un " type="text" align="center" name="Mobile" placeholder="Mobile">
-          <input class="un " type="text" align="center" name="Email" placeholder="Email">
-          <input class="pass" type="password" align="center" name="Password" placeholder="Password">
-          <p class="bottom-one"></p>
-          <input class="submit" align="center" type="submit" value="SignUp">
-          <a href="signin.html" class="register" align="center">Already Registered?</a>
+          <input class="username " type="text" name="firstname" placeholder="First Name">
+          <input class="username " type="text" name="lastname" placeholder="Last Name">
+          <input class="username " type="text" name="phone" placeholder="Mobile">
+          <input class="username " type="text" name="email" placeholder="Email">
+          <input class="password " type="password" name="password" placeholder="Password">
+          <input class="password " type="password" name="confirmpassword" placeholder="Confirm Password">
+          <input class="submit" type="submit" value="SignUp">
+          <a href="signin.html" class="register" >Already Registered?</a>
         </div>
     </body>   
 </html>
