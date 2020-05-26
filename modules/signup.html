@@ -14,63 +14,89 @@
         <link rel="stylesheet" href="../resources/css/style.css">
         <title>First Page</title>
     </head>
-    <script>
+    <script type="text/javascript">
       function validateForm() {
-          var phoneValidation = /^\d{10}$/;
-          var emailValidation = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-          var passwordValidation=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
-          var firstname = document.forms["RegForm"]["firstname"].value;
-          var lastname = document.forms["RegForm"]["lastname"].value;
-          var phone = document.forms["RegForm"]["mobile"].value;
-          var email = document.forms["RegForm"]["email"].value;
-          var password = document.forms["RegForm"]["password"].value;
-          var confirmpassword=document.forms["RegForm"]["confirmpassword"].value;
-          if (firstName == "")                                  
-          { 
-              window.alert("Please Enter Your Name."); 
-              name.focus(); 
-              return false; 
-          }
-          if(!(phone.match(phoneValidation))){
-              window.alert("Please Enter Valid Mobile Number."); 
-              phone.focus();
-              return false; 
-          }
-          if (!(email.match(emailValidation)))                                   
-          { 
-              window.alert("Please Enter Valid Email Id."); 
-              email.focus(); 
-              return false; 
-          } 
-          if (!(password.match(passwordValidation)))                        
-          { 
-              window.alert("Please Enter Valid Password."); 
-              password.focus();
-              return false; 
-          }
-          if (password != confirmpassword)                        
-          { 
-              window.alert("Please Make Sure Both Passwords Are Same"); 
-              confirmpassword.focus();
-              return false; 
-          } 
-          if(confirm('Do you want to Submit ?'))
-              yourformelement.submit();
-          else
-            return false;
+        var phoneValidation = /^\d{10}$/;
+        var emailValidation = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        var passwordValidation=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+        var firstName = document.forms["RegForm"]["firstName"].value;
+        var lastName = document.forms["RegForm"]["lastName"].value;
+        var service=document.forms["RegForm"]["service"].value;
+        var phoneNumber = document.forms["RegForm"]["phoneNumber"].value;
+        var email = document.forms["RegForm"]["email"].value;
+        var password = document.forms["RegForm"]["password"].value;
+        var confirmpassword=document.forms["RegForm"]["confirmPassword"].value;
+
+            if (firstName == ""){ 
+                window.alert("Please Enter First Your Name."); 
+                return false;
+            }
+            if (lastName == ""){ 
+                window.alert("Please Enter Last Your Name."); 
+                return false;
+            }
+            if(!(phoneNumber.match(phoneValidation))){
+                window.alert("Please Enter Valid Mobile Number."); 
+                return false;
+            }
+            if (!(email.match(emailValidation))){ 
+                window.alert("Please Enter Valid Email Id."); 
+                return false;
+            } 
+            if (!(password.match(passwordValidation))){ 
+                window.alert("Please Enter Valid Password."); 
+                return false;
+            }
+            if (password != confirmpassword){
+                window.alert("Please Make Sure Both Passwords Are Same"); 
+                return false;
+            }
+            if(confirm('Do you want to Submit ?'))
+            { 
+                let result=addNewUser(firstName, lastName, service, phoneNumber, email, password);
+                if(result)
+                    location.href = "blank.html"
+                yourformelement.submit();
+            }    
+            else
+                return false;
       }
+      function addNewUser(firstName, lastName, service, phoneNumber, email, password) {
+        alert("Inside Add New User")
+        var sendInfo = {
+            firstName, lastName, service, phoneNumber, email, password
+        };
+        alert("Inside Add New User...2")
+
+        $.ajax({
+                type: "POST",
+                url: "http://fundoonotes.incubation.bridgelabz.com/api/user/userSignUp",
+                dataType: "json",
+                data: "sendInfo",
+                contentType: 'application/json',
+                success: function (data) {
+                    alert(data);
+                },
+                error: function (error) {
+                    jsonValue = jQuery.parseJSON(error.responseText);
+                    alert("error" + error.responseText);
+                }
+        });
+        alert("Inside Add New User..4")
+    }
     </script>
     <body>
       <div class="main">
         <p class="sign" >Create Account</p>
         <p class="bottom-one"></p>
-        <form name="RegForm" class="form1" action="blank.html" onsubmit="return validateForm()" method="post">
-          <input class="username " type="text" name="firstname" placeholder="First Name">
-          <input class="username " type="text" name="lastname" placeholder="Last Name">
-          <input class="username " type="text" name="phone" placeholder="Mobile">
+        <form name="RegForm" class="form1" onsubmit="return validateForm()" method="post">
+          <input class="username " type="text" name="firstName" placeholder="First Name">
+          <input class="username " type="text" name="lastName" placeholder="Last Name">
+          <input class="username " type="text" name="service" placeholder="Type of Service">
+          <input class="username " type="text" name="phoneNumber" placeholder="Mobile">
           <input class="username " type="text" name="email" placeholder="Email">
           <input class="password " type="password" name="password" placeholder="Password">
-          <input class="password " type="password" name="confirmpassword" placeholder="Confirm Password">
+          <input class="password " type="password" name="confirmPassword" placeholder="Confirm Password">
           <input class="submit" type="submit" value="SignUp">
           <a href="signin.html" class="register" >Already Registered?</a>
         </div>
